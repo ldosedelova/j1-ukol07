@@ -12,7 +12,6 @@ public class PreferenceController {
     private final PresentationModel<PreferenceBean> model;
     private final Action ulozitAction;
 
-
     public PreferenceController() {
         model = new PresentationModel<>(new PreferenceBean());
         ulozitAction = ActionBuilder.create("&Uložit", this::handleUlozit);
@@ -36,7 +35,9 @@ public class PreferenceController {
         PreferenceBean preferenceBean = model.getBean();
         ulozitAction.setEnabled(
                 preferenceBean.getPrezdivka() != null
+                        && preferenceBean.getPrezdivka().isEmpty() != true
                         && preferenceBean.getOblibenaBarva() != null
+
         );
     }
 
